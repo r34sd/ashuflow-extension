@@ -41,3 +41,7 @@ Don't move the folder after setup (re-run `SETUP.bat` if you do).
 
 Use it only for content you have the right to download (your own uploads,
 Creative Commons, public domain). Downloading may violate YouTube's Terms of Service.
+
+## License
+
+[MIT](LICENSE) © 2026 Ashu
