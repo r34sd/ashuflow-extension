@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "name": "ashuflow Extension",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Download YouTube videos as MP4 or MP3 with a button right below the video.",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxAlolH8XSXyYR0+gKKA38xmv9u8WSKd93S6FBma1hjh4PMWFzkSrtj+3JXdcQaKinQ+VruumUQnD4Y9LTTZNt68HgTExlCvfT5057Ui6LRonieZU4EpiQ+cpC4vyvp0ZXPE1Xi1n7z+Yt7xnnyKhTYs7KJ35qg/yNEugVfbtovVmxsS7CQA9OTkIupPx93V0fzA45NW6BceS/0Hex8P23dDaKdrNN46N3VKxtTAW2rMov130nwaHOKnXZiz+t/99RKoGhkI3NwYGVgbw6cfDpqqloA4J3ViOTXdpDbmNK7TPXeBeFQBHl8qPV8Z7lhZ3X76vLofRzD3c22J8hqY/pQIDAQAB",
-  "permissions": ["activeTab", "nativeMessaging"],
+  "permissions": ["nativeMessaging", "storage", "alarms"],
   "host_permissions": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
   "background": { "service_worker": "background.js", "scripts": ["background.js"] },
   "content_scripts": [

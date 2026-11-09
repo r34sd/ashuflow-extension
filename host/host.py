@@ -191,6 +191,71 @@ def main():
             download(msg.get("url"), msg.get("format"), msg.get("quality"))
         elif msg.get("action") == "reveal":
             reveal(msg.get("file"), msg.get("format"))
+        elif msg.get("action") == "update":
+            update()
+
+
+REPO_ZIP = "https://codeload.github.com/r34sd/ashuflow-extension/zip/refs/heads/main"
+ROOT = Path(__file__).resolve().parent.parent  # project folder (contains extension/ and host/)
+UPDATABLE = ("extension/", "host/", "README.md", "SETUP.bat", ".gitignore")
+
+
+def update():
+    """Pull the latest code from GitHub into this folder, then update yt-dlp.
+
+    Every subprocess has its output captured: stdout is the messaging channel,
+    so anything printed there would corrupt the connection to the browser.
+    """
+    import subprocess
+    try:
+        if (ROOT / ".git").is_dir() and shutil.which("git"):
+            send({"type": "update-progress", "message": "Pulling latest code from GitHub…"})
+            r = subprocess.run(["git", "-C", str(ROOT), "pull", "--ff-only"], capture_output=True, text=True, timeout=120)
+            if r.returncode != 0:
+                return send({"type": "error", "message": f"git pull failed: {(r.stderr or r.stdout).strip()[:250]}"})
+            changed = "Already up to date" not in r.stdout
+        else:
+            changed = update_from_zip()
+
+        send({"type": "update-progress", "message": "Updating yt-dlp…"})
+        r = subprocess.run([sys.executable, "-m", "pip", "install", "--user", "--upgrade", "--quiet", "yt-dlp"],
+                           capture_output=True, text=True, timeout=300)
+        if r.returncode != 0:
+            return send({"type": "error", "message": f"Code updated, but yt-dlp update failed: {r.stderr.strip()[:200]}"})
+
+        send({"type": "updated", "message": "Updated! Reloading…" if changed else "Already up to date. Reloading…"})
+    except Exception as e:
+        send({"type": "error", "message": f"Update failed: {e}"[:300]})
+
+
+def update_from_zip():
+    """Download the repo zip and copy changed files over this folder. Returns True if anything changed."""
+    import io
+    import urllib.request
+    import zipfile
+
+    send({"type": "update-progress", "message": "Downloading latest version from GitHub…"})
+    with urllib.request.urlopen(REPO_ZIP, timeout=60) as resp:
+        data = resp.read()
+    changed = 0
+    with zipfile.ZipFile(io.BytesIO(data)) as z:
+        for name in z.namelist():
+            if name.endswith("/"):
+                continue
+            rel = name.split("/", 1)[1] if "/" in name else ""  # strip "ashuflow-extension-main/"
+            parts = Path(rel).parts
+            # Only known project files; refuse anything that tries to escape the folder
+            if not rel or ".." in parts or Path(rel).is_absolute() or not rel.startswith(UPDATABLE):
+                continue
+            target = ROOT / rel
+            new = z.read(name)
+            if target.exists() and target.read_bytes() == new:
+                continue  # unchanged (also avoids rewriting host.bat while it's running)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(new)
+            changed += 1
+    send({"type": "update-progress", "message": f"Updated {changed} file(s)."})
+    return changed > 0
 
 
 def reveal(file, fmt=None):

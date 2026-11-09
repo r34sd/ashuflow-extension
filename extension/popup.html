@@ -17,6 +17,17 @@
     .row { display: flex; gap: 8px; }
     button { flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #3f3f46; background: #27272a; color: inherit; font: inherit; cursor: pointer; }
     button:hover { background: #3f3f46; }
+    button:disabled { opacity: .6; cursor: default; }
+    .update { border: 1px solid #DB2777; background: rgba(219,39,119,.12); }
+    .update b { color: #f9a8d4; }
+    .primary { margin-top: 8px; width: 100%; border: 0; color: #fff; font-weight: 600;
+      background: linear-gradient(90deg, #7C3AED, #DB2777, #F97316); }
+    .primary:hover { filter: brightness(1.1); background: linear-gradient(90deg, #7C3AED, #DB2777, #F97316); }
+    #updMsg { margin-top: 6px; color: #a1a1aa; word-break: break-word; }
+    #updMsg:empty { display: none; }
+    footer { margin-top: 12px; display: flex; justify-content: space-between; color: #71717a; font-size: 12px; }
+    footer a { color: #a1a1aa; cursor: pointer; text-decoration: underline; }
+    footer a:hover { color: #fff; }
   </style>
 </head>
 <body>
@@ -24,7 +35,12 @@
     <img src="icons/icon48.png" alt="">
     <h1>ashuflow Extension</h1>
   </header>
-  <p class="hint">To download, open a YouTube video and use the <b>⬇ Download (ashuflow)</b> button below the player.</p>
+  <div class="card update" id="updateCard" hidden>
+    <div id="updText"></div>
+    <button class="primary" id="updBtn">⬆ Update now</button>
+    <div id="updMsg"></div>
+  </div>
+  <p class="hint">To download, open a YouTube video and click the <b>⬇</b> button in the player controls, next to <b>CC</b>.</p>
   <div class="card" id="statusCard" hidden>
     <div id="msg"></div>
     <div class="track"><div class="fill" id="fill"></div></div>
@@ -33,6 +49,10 @@
     <button id="songs">📂 Songs</button>
     <button id="videos">📂 Videos</button>
   </div>
+  <footer>
+    <span id="ver"></span>
+    <a id="check">Check for updates</a>
+  </footer>
   <script src="popup.js"></script>
 </body>
 </html>

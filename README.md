@@ -1,9 +1,13 @@
 # ashuflow Extension (Chrome, Edge, Brave, Opera, Vivaldi, Firefox)
 
-Adds a **⬇ Download (ashuflow)** button right below every YouTube video.
+Adds a **⬇ download button to the YouTube player controls**, right next to **CC**.
 Pick **MP3** (320 / 192 / 128 kbps) or **Video** (1080p / 720p / 480p MP4).
-Songs (MP3) are saved to `Downloads\ashuflow\Songs`, videos (MP4) to `Downloads\ashuflow\Videos`.
-After a download, click **📂 Show in Songs / Videos** to open that folder with the file selected.
+
+- Songs (MP3) are saved to `Downloads\ashuflow\Songs`
+- Videos (MP4) are saved to `Downloads\ashuflow\Videos`
+
+Progress shows as a ring around the button and a panel inside the player; when it's
+done, click **📂 Show in Songs / Videos** to open the folder with the file selected.
 
 The extension hands the URL to a small local helper that uses **yt-dlp** + **ffmpeg**
 (a browser extension can't download and convert by itself, so the helper is required).
@@ -16,18 +20,22 @@ The extension hands the URL to a small local helper that uses **yt-dlp** + **ffm
    - **Chrome / Edge / Brave / Opera / Vivaldi:** open the extensions page
      (`chrome://extensions`, `edge://extensions`, ...), turn on **Developer mode**,
      click **Load unpacked**, choose the `extension` folder.
-     If it was already loaded, click the **reload** icon on its card.
    - **Firefox:** open `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on** →
      pick `extension\manifest.json`. (Firefox removes temporary add-ons on restart.)
 3. Restart the browser.
 
 ## Use
 
-Open a YouTube video → click **⬇ Download (ashuflow)** under the player → choose MP3 or Video.
-The toolbar icon popup works too.
+Open a YouTube video → click **⬇** in the player controls (next to CC) → choose MP3 or Video.
 
-Don't move the folder after setup (re-run `SETUP.bat` if you do). If downloads start
-failing after a YouTube change, re-run `SETUP.bat` to update yt-dlp.
+## Updates
+
+The extension checks GitHub for a newer version when the browser starts and every 6 hours.
+When one is available, the toolbar icon shows a **NEW** badge: open the toolbar menu and
+click **⬆ Update now**. It downloads the latest code, updates yt-dlp, and reloads itself.
+You can also click **Check for updates** in the toolbar menu at any time.
+
+Don't move the folder after setup (re-run `SETUP.bat` if you do).
 
 Use it only for content you have the right to download (your own uploads,
 Creative Commons, public domain). Downloading may violate YouTube's Terms of Service.
