@@ -2,3 +2,6 @@
 host/com.ytmp3.host.*.json
 __pycache__/
 *.pyc
+
+# Personal editor settings
+.claude/settings.local.json

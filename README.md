@@ -1,5 +1,7 @@
 # ashuflow Extension (Chrome, Edge, Brave, Opera, Vivaldi, Firefox)
 
+**Developed by Ashu**
+
 Adds a **⬇ download button to the YouTube player controls**, right next to **CC**.
 Pick **MP3** (320 / 192 / 128 kbps) or **Video** (1080p / 720p / 480p MP4).
 
