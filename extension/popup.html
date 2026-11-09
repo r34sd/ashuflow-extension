@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 300px; font: 13px system-ui, sans-serif; margin: 0; padding: 14px; background: #18181b; color: #f4f4f5; }
+    header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    header img { width: 32px; height: 32px; }
+    h1 { font-size: 15px; margin: 0; }
+    .hint { color: #a1a1aa; line-height: 1.45; margin: 0 0 12px; }
+    .card { background: #27272a; border-radius: 8px; padding: 10px; margin-bottom: 12px; }
+    .card[hidden] { display: none; }
+    .track { height: 6px; border-radius: 3px; background: #3f3f46; overflow: hidden; margin-top: 8px; }
+    .fill { height: 100%; width: 0; background: linear-gradient(90deg, #7C3AED, #DB2777, #F97316); transition: width .25s; }
+    #msg { word-break: break-word; }
+    .error { color: #f87171; } .done { color: #4ade80; }
+    .row { display: flex; gap: 8px; }
+    button { flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #3f3f46; background: #27272a; color: inherit; font: inherit; cursor: pointer; }
+    button:hover { background: #3f3f46; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <h1>ashuflow Extension</h1>
+  </header>
+  <p class="hint">To download, open a YouTube video and use the <b>⬇ Download (ashuflow)</b> button below the player.</p>
+  <div class="card" id="statusCard" hidden>
+    <div id="msg"></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="row">
+    <button id="songs">📂 Songs</button>
+    <button id="videos">📂 Videos</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
