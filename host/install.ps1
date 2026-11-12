@@ -34,7 +34,7 @@ $bat = Join-Path $dir "host.bat"
 $chromeManifest = Join-Path $dir "$hostName.chrome.json"
 $firefoxManifest = Join-Path $dir "$hostName.firefox.json"
 
-$base = @{ name = $hostName; description = "ashuflow Extension helper"; path = $bat; type = "stdio" }
+$base = @{ name = $hostName; description = "SAFlow Extension helper"; path = $bat; type = "stdio" }
 $c = $base.Clone(); $c.allowed_origins = @("chrome-extension://$ChromeId/")
 $f = $base.Clone(); $f.allowed_extensions = @($FirefoxId)
 [IO.File]::WriteAllText($chromeManifest, ($c | ConvertTo-Json))

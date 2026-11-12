@@ -1,12 +1,12 @@
-# ashuflow Extension (Chrome, Edge, Brave, Opera, Vivaldi, Firefox)
+# SAFlow Extension (Chrome, Edge, Brave, Opera, Vivaldi, Firefox)
 
-**Developed by Ashu**
+**Developed by SA Brothers**
 
 Adds a **⬇ download button to the YouTube player controls**, right next to **CC**.
 Pick **MP3** (320 / 192 / 128 kbps) or **Video** (1080p / 720p / 480p MP4).
 
-- Songs (MP3) are saved to `Downloads\ashuflow\Songs`
-- Videos (MP4) are saved to `Downloads\ashuflow\Videos`
+- Songs (MP3) are saved to `Downloads\SAFlow\Songs`
+- Videos (MP4) are saved to `Downloads\SAFlow\Videos`
 
 Progress shows as a ring around the button and a panel inside the player; when it's
 done, click **📂 Show in Songs / Videos** to open the folder with the file selected.
@@ -44,4 +44,4 @@ Creative Commons, public domain). Downloading may violate YouTube's Terms of Ser
 
 ## License
 
-[MIT](LICENSE) © 2026 Ashu
+[MIT](LICENSE) © 2026 SA Brothers

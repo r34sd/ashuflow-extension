@@ -1,4 +1,4 @@
-// ashuflow: adds a download button to the YouTube player's control bar (left of CC).
+// SAFlow: adds a download button to the YouTube player's control bar (left of CC).
 // YouTube enforces Trusted Types, so everything is built with createElement (no innerHTML).
 (() => {
   const NS = "http://www.w3.org/2000/svg";
@@ -80,8 +80,8 @@
 
   function buildButton() {
     const btn = el("button", "ytp-button af-ctrl");
-    btn.setAttribute("aria-label", "Download (ashuflow)");
-    btn.title = "Download (ashuflow)";
+    btn.setAttribute("aria-label", "Download (SAFlow)");
+    btn.title = "Download (SAFlow)";
     const s = svg("svg", { viewBox: "0 0 24 24" }, btn);
     ui.ring = svg("circle", { cx: 12, cy: 12, r: 10.5, class: "af-ring", "stroke-dasharray": RING, "stroke-dashoffset": RING, transform: "rotate(-90 12 12)" }, s);
     const g = svg("g", { fill: "none", stroke: "#fff", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round" }, s);
@@ -113,7 +113,7 @@
     const toast = el("div", "af-toast");
     toast.hidden = true;
     const top = el("div", "af-toast-top");
-    ui.title = el("span", "af-toast-title", "ashuflow");
+    ui.title = el("span", "af-toast-title", "SAFlow");
     const x = el("button", "af-x", "×");
     x.title = "Close";
     x.addEventListener("click", () => { dismissed = state.status; toast.hidden = true; });
@@ -170,7 +170,7 @@
     ui.btn.classList.toggle("working", working);
     ui.btn.classList.toggle("indeterminate", working && !pct);
     ui.ring.setAttribute("stroke-dashoffset", RING * (1 - pct / 100));
-    ui.btn.title = working ? `Downloading… ${pct ? pct + "%" : ""}` : "Download (ashuflow)";
+    ui.btn.title = working ? `Downloading… ${pct ? pct + "%" : ""}` : "Download (SAFlow)";
 
     // Status panel inside the player
     ui.toast.hidden = state.status === "idle" || dismissed === state.status;

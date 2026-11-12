@@ -1,4 +1,4 @@
-"""ashuflow native messaging host: downloads a YouTube URL as MP3 or MP4 via yt-dlp + ffmpeg."""
+"""SAFlow native messaging host: downloads a YouTube URL as MP3 or MP4 via yt-dlp + ffmpeg."""
 import json
 import os
 import re
@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 ALLOWED = re.compile(r"^https://(www\.|m\.)?(youtube\.com|youtu\.be)/", re.I)
-OUT_DIR = Path.home() / "Downloads" / "ashuflow"
+OUT_DIR = Path.home() / "Downloads" / "SAFlow"
 SONG_DIR = OUT_DIR / "Songs"    # MP3s
 VIDEO_DIR = OUT_DIR / "Videos"  # MP4s
 

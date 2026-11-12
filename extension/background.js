@@ -136,7 +136,7 @@ chrome.runtime.onMessage.addListener((msg, sender, reply) => {
       return;
     }
     if (updating) {
-      reply({ ok: false, error: "ashuflow is updating - try again in a moment." });
+      reply({ ok: false, error: "SAFlow is updating - try again in a moment." });
       return;
     }
     if (state.status === "working") {
