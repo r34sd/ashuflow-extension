@@ -195,7 +195,7 @@ def main():
             update()
 
 
-REPO_ZIP = "https://codeload.github.com/r34sd/ashuflow-extension/zip/refs/heads/main"
+REPO_ZIP = "https://codeload.github.com/r34sd/saflow-extension/zip/refs/heads/main"
 ROOT = Path(__file__).resolve().parent.parent  # project folder (contains extension/ and host/)
 UPDATABLE = ("extension/", "host/", "README.md", "SETUP.bat", ".gitignore")
 
@@ -242,7 +242,7 @@ def update_from_zip():
         for name in z.namelist():
             if name.endswith("/"):
                 continue
-            rel = name.split("/", 1)[1] if "/" in name else ""  # strip "ashuflow-extension-main/"
+            rel = name.split("/", 1)[1] if "/" in name else ""  # strip "saflow-extension-main/"
             parts = Path(rel).parts
             # Only known project files; refuse anything that tries to escape the folder
             if not rel or ".." in parts or Path(rel).is_absolute() or not rel.startswith(UPDATABLE):

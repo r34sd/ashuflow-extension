@@ -1,5 +1,5 @@
 const HOST = "com.ytmp3.host";
-const REPO = "r34sd/ashuflow-extension";
+const REPO = "r34sd/saflow-extension";
 const REMOTE_MANIFEST = `https://raw.githubusercontent.com/${REPO}/main/extension/manifest.json`;
 const CHECK_EVERY_MIN = 6 * 60;
 
